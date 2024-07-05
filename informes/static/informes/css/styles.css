@@ -1,0 +1,112 @@
+/* POPPINS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+.navbar {
+    width: 100%;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 70px); /* Ajusta la altura para tener en cuenta el navbar */
+    width: 100%;
+    padding-top: 70px; /* Asegura que el contenido no esté cubierto por el navbar */
+}
+
+.container {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el formulario */
+    border-radius: 10px; /* Bordes redondeados para el formulario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+}
+
+.top-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+span {
+    color: #fff;
+    font-size: small;
+    display: block;
+    margin-bottom: 10px;
+}
+
+header {
+    color: #fff;
+    font-size: 30px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-field .input {
+    height: 45px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: #fff;
+    padding-left: 42px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.input-field i {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    color: #fff;
+}
+
+.input-field label {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.input-field div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-field div input[type="radio"] {
+    margin-right: 5px;
+}
+
+::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.submit {
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: .3s;
+    color: #333;
+}
+
+.submit:hover {
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+

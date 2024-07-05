@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilosForm.css">
+    <script src="funciones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js" ></script>
+
+
+    <title>Formulario de Presupuesto para Reparación de Vehículo</title>
+    
+</head>
+<body class="bg-secondary-subtle text-white">
+    <!--barra de navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html"  id="colorletras" onmouseover="cambiarColorTexto()" onmouseout="restaurarColorTexto()"><span>MechMed</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./servicios.html">SERVICIOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./nosotros.html">NOSOTROS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./contacto.html">¿TIENES DUDAS?</a>
+              </li></ul>
+          </div>
+        </div>
+      </nav>
+      <!--final barra de navegación-->
+
+      <!--formulario-->
+      <div class="container2">
+    <h3 class="text-center mt-3">FORMULARIO DE PRESUPUESTO</h3>
+    <form id="budgetForm">
+
+        <!--datos cliente-->
+        
+            <h4 class="pt-3">Datos del Cliente</h4>
+            <label for="nombre">Nombre:</label>
+            <input class="rounded" type="text" id="nombre" name="nombre" required pattern="[a-zA-Z\s]+" title="Solo letras">
+
+            <label for="rut">RUT:</label>
+            <input class="rounded" type="text" id="rut" name="rut" required pattern="\d{1,2}\.\d{3}\.\d{3}-[0-9kK]" title="Formato: XX.XXX.XXX-X">
+
+            <label for="direccion">Dirección:</label>
+            <input class="rounded" type="text" id="direccion" name="direccion" required><br><br>
+
+            <label for="contacto">Número de Contacto:</label>
+            <input class="rounded" type="text" id="contacto" name="contacto" required pattern="\d+" title="Solo números">
+
+            <label for="correo">Correo:</label>
+            <input class="rounded" type="email" id="correo" name="correo" required>
+        
+
+
+        <!--datos vehiculo-->
+      
+            <h4 class="pt-5">Datos del Vehículo</h4>
+            <label for="año">Año:</label>
+            <select class="rounded" id="año" name="año" required>
+                <option value="">Seleccione el año</option>
+                <script>
+                    const currentYear = new Date().getFullYear();
+                    for (let year = currentYear; year >= 1980; year--) {
+                        document.write(`<option value="${year}">${year}</option>`);
+                    }
+                </script>
+            </select>
+
+            <label for="marca">Marca:</label>
+            <input class="rounded" type="text" id="marca" name="marca" required>
+
+            <label for="modelo">Modelo:</label>
+            <input class="rounded" type="text" id="modelo" name="modelo" required>
+
+            <label for="nSerie">N° serie:</label>
+            <input class="rounded" type="text" id="nSerie" name="nSerie" required pattern="\d+" title="Solo números">
+      
+
+
+        <!--datos reparacion-->
+        
+            <h4 class="pt-5">Datos de la Reparación</h4>
+            <label for="trabajo">Trabajo Solicitado:</label>
+            <textarea class="rounded" id="trabajo" name="trabajo" required></textarea><br><br>
+
+            <label for="fotos">Respaldo Fotográfico:</label>
+            <input class="rounded" type="file" id="fotos" name="fotos" accept="image/*" required multiple><br>
+            <div id="preview" class="preview"></div><br>
+
+            <label for="observaciones">Observaciones Extra:</label>
+            <textarea class="rounded" id="observaciones" name="observaciones" required></textarea><br><br>
+        
+        <div class="pb-4">
+        <button class="btn btn-primary" type="submit">Enviar</button></div>
+    </form></div>
+
+
+    <!--funciones-->
+    <script>
+        document.getElementById('budgetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Presupuesto enviado correctamente, nos pondremos en contacto contigo a la brevedad');
+            window.location.href = 'index.html'; 
+        });
+
+        document.getElementById('fotos').addEventListener('change', function(event) {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = '';
+            for (const file of event.target.files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+            
+        });
+    </script>
+
+</body>
+</html>

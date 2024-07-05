@@ -1,0 +1,115 @@
+<!doctype html>
+<lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Servicios</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="funciones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  </head>
+    <body class="bg-secondary-subtle">
+      <!--barra de navegacion-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html"  id="colorletras" onmouseover="cambiarColorTexto()" onmouseout="restaurarColorTexto()"><span>MechMed</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./servicios.html">SERVICIOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./nosotros.html">NOSOTROS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contacto.html">¿TIENES DUDAS?</a>
+          </li></ul>
+          <!--inicio de sesion-->
+          <form id="loginForm">
+            <a href="./login.html"><button class="btn btn-primary ms-2" type="button" >Iniciar Sesión</button></a>
+              </form>
+        <!--fin inicio sesion-->
+      </div>
+    </div>
+  </nav>
+  <!--final barra de navegación-->
+
+      <div class="container-fluid mt-3">
+        <h5 class="text-center mb-4">SERVICIOS</h5>
+          <div class="row">
+            <div class="col-md-3"> <!--mantenimiento-->
+              <h6 class="text-center">MANTENIMIENTO</h6>
+              <div class="card">
+                <img src="./imagenes/mantenimiento.webp" class="card-img" alt="mantenimiento">
+                <div class="card-body">
+                  <p class="card-text">Nos enfocamos en evitar la contaminación externa en los sistemas para prolongar la vida útil de los componentes internos y garantizar un funcionamiento óptimo de la maquinaria pesada.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3"> <!--reparacion-->
+              <h6 class="text-center">REPARACIÓN DE MAQUINARIA</h6>
+              <div class="card">
+                <img src="./imagenes/reparacion.jpg" class="card-img" alt="reparacion">
+                <div class="card-body">
+                  <p class="card-text">La reparación de maquinaria pesada es un proceso centrado en ofrecer un servicio de calidad y eficiencia, mediante el diagnóstico preciso y la aplicación de soluciones efectivas para restaurar el funcionamiento óptimo de los equipos, garantizando así su rendimiento y durabilidad.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3"> <!--testeo-->
+              <H6 class="text-center">TESTEO DE SISTEMA</H6>
+              <div class="card">
+                <img src="./imagenes/testeohid.png" class="card-img" alt="testeoHidraulico">
+                <div class="card-body">
+                  <p class="card-text">Los testeos completos de todos los sistemas, incluyendo motor, transmisión y sistema hidráulico (dirección, freno, implementos), son esenciales. Garantizan la funcionalidad óptima, la seguridad y el rendimiento de la maquinaria, asegurando un servicio de calidad y eficiencia.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3"> <!--componentes-->
+              <H6 class="text-center">REPARACIÓN DE COMPONENTES</H6>
+              <div class="card">
+                <img src="./imagenes/componentes.jpg " class="card-img" alt="mantenimiento">
+                <div class="card-body">
+                  <p class="card-text">La reparación de maquinaria pesada implica no solo corregir el fallo, sino también diagnosticar su causa raíz. Esto asegura un servicio de calidad y eficiencia al abordar los problemas subyacentes para prevenir futuras averías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+
+   
+      <script src="./js/bootstrap.min.js" ></script>
+
+      <script src="funciones.js"></script>
+
+      <!--funciones jquery-->
+
+      <script>
+        $(document).ready(function(){
+            
+            function hacerParpadear() {
+                $("#boton").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+            }
+  
+      
+            $("#boton").click(function(){
+                hacerParpadear();
+            });
+        });
+    </script>
+
+  
+      
+
+     
+    
+
+      
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="funciones.js"></script>
+    <script src="./js/bootstrap.min.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Formulario de Presupuesto</title>
+</head>
+
+
+<body class="bg-secondary-subtle text-white">
+  <!--barra de navegacion-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html"  id="colorletras" onmouseover="cambiarColorTexto()" onmouseout="restaurarColorTexto()"><span>MechMed</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./servicios.html">SERVICIOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./nosotros.html">NOSOTROS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contacto.html">¿TIENES DUDAS?</a>
+          </li></ul>
+      </div>
+    </div>
+  </nav>
+  <!--final barra de navegación-->
+
+
+  <!--formulario-->
+  <form id="serviceForm" class="container2">
+    <h3 class="text-center mt-3 mb-4">INFORME DE SERVICIO TALLER Y TERRENO</h3>
+
+    <!-- Datos del cliente -->
+    <h4 class="pt-3">Datos del Cliente</h4>
+    <div class="fw-bold">
+      <label for="nombreEmpresa">Nombre del cliente<span>*</span></label>
+      <input class="rounded" type="text" id="nombreEmpresa" name="nombreEmpresa" required>
+
+      <label for="rut">RUT:</label>
+      <input class="rounded" type="text" id="rut" name="rut" required pattern="\d{1,2}\.\d{3}\.\d{3}-[0-9kK]" title="Formato: XX.XXX.XXX-X">
+
+      <label for="contactoCliente">Numero de contacto<span>*</span></label>
+      <input class="rounded" type="tel" id="contactoCliente" name="contactoCliente" required pattern="[0-9]+" title="Por favor, ingrese solo números"><br><br>
+
+      <label for="direccionContacto">Direccion<span>*</span></label>
+      <input class="rounded" type="text" id="direccionContacto" name="direccionContacto" required>
+
+      <label for="correoContacto">Correo<span>*</span></label>
+      <input class="rounded" type="email" id="correoContacto" name="correoContacto" required>
+    </div>
+    
+
+    <!-- Datos del técnico -->
+    <h4 class="pt-5">Datos del Técnico</h4>
+    <div class="fw-bold">
+      <label for="nombreTecnico">Nombre del Técnico <span>*</span></label>
+      <input class="rounded" type="text" id="nombreTecnico" name="nombreTecnico" required pattern="[A-Za-z\s]+" title="Por favor, ingrese solo letras y espacios">
+
+      <label for="cargoTecnico">Cargo <span>*</span></label>
+      <input class="rounded" type="text" id="cargoTecnico" name="cargoTecnico" required>
+
+      <label for="numeroContactoTecnico">Número de Contacto <span>*</span></label>
+      <input class="rounded" type="tel" id="numeroContactoTecnico" name="numeroContactoTecnico" required pattern="[0-9]+" title="Por favor, ingrese solo números">
+    </div>
+    
+
+    <!-- Datos del vehículo -->
+    <h4 class="pt-5">Datos del Vehículo</h4>
+    <div class="fw-bold">
+      <label for="marcaVehiculo">Marca <span>*</span></label>
+      <input class="rounded" type="text" id="marcaVehiculo" name="marcaVehiculo" required>
+
+      <label for="modeloVehiculo">Modelo <span>*</span></label>
+      <input class="rounded" type="text" id="modeloVehiculo" name="modeloVehiculo" required>
+
+      <label for="numeroSerie">Número de Serie <span>*</span></label>
+      <input class="rounded" type="text" id="numeroSerie" name="numeroSerie" required pattern="[0-9]+" title="Por favor, ingrese solo números">
+
+      <br><br><label for="numeroInterno">Número Interno <span>*</span></label>
+      <input class="rounded" type="tel" id="numeroInterno" name="numeroInterno" required pattern="[0-9]+" title="Por favor, ingrese solo números"><br>
+    </div>
+  
+
+    <!-- Datos del servicio -->
+    <h4 class="pt-5">Datos del Servicio</h4>
+    <div class="fw-bold">
+      <label for="horaRecepcion">Hora de Recepción <span>*</span></label>
+      <input class="rounded" type="time" id="horaRecepcion" name="horaRecepcion" required>
+
+      <label for="horaEntrega">Hora de Entrega <span>*</span></label>
+      <input class="rounded" type="time" id="horaEntrega" name="horaEntrega" required>
+
+      <label for="llegadaTaller">Llegada a Taller <span>*</span></label>
+      <input class="rounded" type="time" id="llegadaTaller" name="llegadaTaller" required>
+
+      <label for="salidaTaller">Salida de Taller <span>*</span></label>
+      <input class="rounded" type="time" id="salidaTaller" name="salidaTaller" required>
+    </div>
+      
+    <div class="fw-bold pt-5">
+      <label for="trabajoSolicitado">Trabajo Solicitado <span>*</span></label>
+      <textarea class="rounded" id="trabajoSolicitado" name="trabajoSolicitado" required></textarea>
+
+      <label for="trabajoRealizado">Trabajo Realizado <span>*</span></label>
+      <textarea class="rounded" id="trabajoRealizado" name="trabajoRealizado" required></textarea>
+    </div>
+    <div class="fw-bold pt-5">
+      <label for="respaldoFotografico">Respaldo Fotográfico <span>*</span></label>
+      <input class="rounded" type="file" id="imagenInput" accept="image/*" required>
+      <div id="vistaPreviaImagen"></div>
+    </div>
+    <div class="fw-bold pt-5 pb-5">
+      <label for="observaciones">Observaciones <span>*</span></label>
+      <textarea class="rounded" id="observaciones" name="observaciones" required></textarea>
+    </div>
+<div class="pb-5"> 
+    <button class="bg-primary btn btn-primary" type="submit">Guardar</button></div>
+  </form>
+
+
+<!--funciones-->
+<!--validar login-->
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const correo = document.getElementById('loginCorreo').value;
+      const contraseña = document.getElementById('loginContraseña').value;
+      const loginError = document.getElementById('loginError');
+
+      if (correo === 'tecnico@mechmed.cl' && contraseña === '1234') {
+          alert('Inicio de sesión exitoso');
+          window.location.href = 'pagTecnico.html'; 
+      } else {
+        alert('Correo o Contraseña incorrectos');;
+      }
+  });
+</script>
+
+<!--repaldo fotografico-->
+<script>
+  document.getElementById('imagenInput').addEventListener('change', function(event) {
+    var archivo = event.target.files[0];
+    var lector = new FileReader();
+
+    lector.onload = function(e) {
+      var vistaPrevia = document.createElement('img');
+      vistaPrevia.src = e.target.result;
+      vistaPrevia.style.width = '100px';
+      vistaPrevia.style.height = '100px';
+      document.getElementById('vistaPreviaImagen').innerHTML = '';
+      document.getElementById('vistaPreviaImagen').appendChild(vistaPrevia);
+    };
+
+    lector.readAsDataURL(archivo);
+  });
+</script>
+<!--fin respaldo-->
+
+
+
+<!--validacion boton guardar-->
+<script>
+  document.getElementById('serviceForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    window.location.href = "seleccion.html";
+
+    alert("Se han ingresado los datos correctamente.");
+  });
+</script>
+
+
+  
+  <script>
+    document.getElementById('serviceForm').addEventListener('submit', function(event) {
+      // Validación del número de contacto del cliente
+      var contactoCliente = document.getElementById('contactoCliente').value.trim();
+      if (!/^\d+$/.test(contactoCliente)) {
+        alert('El contacto del cliente debe contener solo números.');
+        event.preventDefault();
+        return;
+      }
+
+      // Validación del número de contacto del técnico
+      var numeroContactoTecnico = document.getElementById('numeroContactoTecnico').value.trim();
+      if (!/^\d+$/.test(numeroContactoTecnico)) {
+        alert('El número de contacto del técnico debe contener solo números.');
+        event.preventDefault();
+        return;
+      }
+
+  
+    });
+  </script>
+</body>
+</html>
