@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link href="{% static 'informe/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'informe/js/bootstrap.min.js' %}"></script>
+
+    <title>Buscar Informes</title>
+    <style>
+        .informe-details {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .informe-details h4 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body class="fondo">
+    <!-- Barra de navegación -->
+    <!-- (Misma barra de navegación que en la plantilla principal) -->
+
+    <div class="container">
+        <h2 class="text-center mt-4">Buscar Informes</h2>
+
+        <form method="get" action="{% url 'buscar_informes' %}">
+            <div class="mb-3">
+                <label for="id_inf_tec" class="form-label">ID del Informe</label>
+                <input type="number" class="form-control" id="id_inf_tec" name="id_inf_tec">
+            </div>
+            <div class="mb-3">
+                <label for="rut_cliente" class="form-label">Orden de Servicio</label>
+                <input type="text" class="form-control" id="rut_cliente" name="rut_cliente">
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button><br>
+            <a href="{% url 'portada' %}" class="btn btn-secondary mt-3">Volver a la Página Principal</a>
+        </form>
+
+        {% if mensaje_error %}
+        <div class="alert alert-danger mt-4" role="alert">
+            {{ mensaje_error }}
+        </div>
+        {% elif informe %}
+        <div class="informe-details mt-4">
+            <h3>Detalles del Informe</h3>
+            <p><strong>ID Informe:</strong> {{ informe.id_inf_tec }}</p>
+            <p><strong>Fecha:</strong> {{ informe.fecha }}</p>
+            <p><strong>Cliente:</strong> {{ informe.id_cliente.nombre_cliente }} {{ informe.id_cliente.cli_apellido_paterno }} {{ informe.id_cliente.cli_apellido_materno }}</p>
+            <p><strong>Orden de Servicio:</strong> {{ informe.orden_servicio }}</p>
+            <p><strong>Trabajo Solicitado:</strong> {{ informe.trabajo_solicitado|default:"No disponible" }}</p>
+            <p><strong>Trabajos Realizados:</strong> {{ informe.trabajos_realizados|default:"No disponible" }}</p>
+            <p><strong>Evaluación:</strong> {{ informe.evaluacion|default:"No disponible" }}</p>
+            <p><strong>Enlaces de Fotos:</strong> <a href="{{ informe.enlaces_fotos }}" target="_blank">{{ informe.enlaces_fotos|default:"No disponible" }}</a></p>
+            <p><strong>Enlaces de Videos:</strong> <a href="{{ informe.enlaces_videos }}" target="_blank">{{ informe.enlaces_videos|default:"No disponible" }}</a></p>
+            <p><strong>Conclusión:</strong> {{ informe.conclusion|default:"No disponible" }}</p>
+            <a href="{% url 'buscar_informes' %}" class="btn btn-secondary mt-3">Regresar</a>
+        </div>
+        
+        {% endif %}
+    </div>
+    
+</body>
+</html>

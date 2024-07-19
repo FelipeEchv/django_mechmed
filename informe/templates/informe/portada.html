@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link href="{% static 'informe/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'informe/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <script src="{% static 'informe/js/funciones.js' %}"></script>
+
+    <title>Página principal</title>
+</head>
+<body class="fondo">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'portada' %}" id="colorletras" onmouseover="cambiarColorTexto()" onmouseout="restaurarColorTexto()">
+                <span>MechMed</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'servicios' %}">SERVICIOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">¿TIENES DUDAS?</a>
+                    </li>
+                </ul>
+                <!-- Inicio de sesión -->
+                <form id="loginForm">
+                    <a href="{% url 'login' %}">
+                        <button class="btn btn-primary ms-2" type="button">Iniciar Sesión</button>
+                    </a>
+                </form>
+                <!-- Fin inicio de sesión -->
+            </div>
+        </div>
+    </nav>
+<br>
+    <!-- Contenido principal -->
+    <div class="container">
+        <!-- Carrusel -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'informe/img/mecanica.jpg' %}" height="450px" width="1000px" class="d-block w-100" alt="mech">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'informe/img/mecanica2.jpg' %}" height="450px" width="1000px" class="d-block w-100" alt="mech1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'informe/img/mecanica3.jpg' %}" height="450px" width="1000px" class="d-block w-100" alt="mech2">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Final del carrusel -->
+
+        <!-- INTRO -->
+        <section class="w-50 mx-auto text-center pt-4 pb-4" id="intro">
+            <h2 class="p-3 fs-2 border-top border-3 ">LA SOLUCIÓN PARA TODOS TUS <span class="text-primary">PROBLEMAS AUTOMOTRICES</span>
+            </h2>
+            <p id="tamletras" onmouseover="agrandarTexto()" onmouseout="restaurarTexto()">En MechMed, nos dedicamos a mantener tu vehículo en perfectas condiciones. Con experiencia y pasión por la mecánica, ofrecemos servicios de calidad y confianza para asegurar tu tranquilidad en cada viaje. ¡Confía en nosotros para el cuidado de tu automóvil!
+        </section>
+
+        <!-- Servicios -->
+        <div class="contenedor mb-2">
+            <div>
+                <h5 class="text-center">SOLICITA TU PRESUPUESTO</h5>
+                <a href="{% url 'crear_solicitud' %}"><img src="{% static 'informe/img/presupuesto.jpg' %}" alt="" class="img1 imagen"></a>
+            </div>
+
+            <div>
+                <h5 class="text-center">REVISA TUS INFORMES</h5>
+                <a href="{% url 'buscar_informes' %}"><img src="{% static 'informe/img/informe.jpg' %}" alt="" class="img2 imagen"></a>
+            </div>
+        </div>
+        <!-- Final de servicios -->
+
+        <!-- Mapa -->
+        <h5 class="text-center" >REVISA NUESTRA UBICACIÓN EN EL SIGUIENTE MAPA INTERACTIVO, ESTAMOS UBICADOS EN HUECHURABA!</h5>
+        <div id="seccionMapa" class="container d-flex">
+            <div id="map"></div>
+        </div>
+        <script>
+            var map = L.map('map').setView([-33.36336828768724, -70.6781315603532], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([-33.36336828768724, -70.6781315603532]).addTo(map)
+                .bindPopup('MechMed')
+                .openPopup();
+        </script>
+        <!-- Final del mapa -->
+         <br>
+
+        <!-- Contacto -->
+        <section class="fondocontacto" class="ps-5 pb-5">
+            <div class="section-content">
+                <div>
+                    <h5>Ventas</h5>
+                    <p>Lunes a Viernes: <br>
+                        09:00 a 19:00 horas <br>
+                        Sábados: <br>
+                        09:00 a 14:00 horas</p>
+                </div>
+
+                <div>
+                    <h5>Contacto</h5>
+                    <p>Teléfono 600 8000 200 <br>
+                        Celular +56987654321 <br>
+                        email: mechmed@mech.cl</p>
+                </div>
+            </div>
+        </section>
+        <!-- Final de contacto -->
+    </div>
+
+    <!-- Funciones jQuery -->
+    <script>
+        $(document).ready(function(){
+            function agrandarImagen() {
+                $(this).animate({ width: '1050px', height: '500px' }, 'fast');
+            }
+
+            function reducirImagen() {
+                $(this).animate({ width: '1000px', height: '450px' }, 'fast');
+            }
+
+            $(".imagen1").hover(agrandarImagen, reducirImagen);
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            function agrandarImagen() {
+                $(this).animate({ width: '650px', height: '350px' }, 'fast');
+            }
+
+            function reducirImagen() {
+                $(this).animate({ width: '600px', height: '300px' }, 'fast');
+            }
+
+            $(".imagen").hover(agrandarImagen, reducirImagen);
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            function hacerParpadear() {
+                $("#boton").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+            }
+
+            $("#boton").click(function(){
+                hacerParpadear();
+            });
+        });
+    </script>
+</body>
+</html>

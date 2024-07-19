@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Ver Presupuesto</title>
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="fondo">
+    <div class="container mt-5">
+        <h1 class="text-center">Ver Presupuesto</h1>
+        <p><strong>ID:</strong> {{ presupuesto.id_presupuesto }}</p>
+        <p><strong>Nombre Cliente:</strong> {{ presupuesto.nombre_cliente }}</p>
+        <p><strong>RUT Cliente:</strong> {{ presupuesto.rut_cliente }}</p>
+        <p><strong>Dirección Cliente:</strong> {{ presupuesto.direccion_cliente }}</p>
+        <p><strong>Teléfono Cliente:</strong> {{ presupuesto.telefono_cliente }}</p>
+        <p><strong>Correo Cliente:</strong> {{ presupuesto.correo_cliente }}</p>
+        <p><strong>Año Vehículo:</strong> {{ presupuesto.año_vehiculo }}</p>
+        <p><strong>Marca Vehículo:</strong> {{ presupuesto.marca_vehiculo }}</p>
+        <p><strong>Modelo Vehículo:</strong> {{ presupuesto.modelo_vehiculo }}</p>
+        <p><strong>Trabajo Solicitado:</strong> {{ presupuesto.trabajo_solicitado }}</p>
+        <p><strong>Respaldo Fotográfico:</strong> <img src="{{ presupuesto.respaldo_fotografico.url }}" alt="Respaldo Fotográfico"></p>
+        <p><strong>Observaciones:</strong> {{ presupuesto.observaciones }}</p>
+        <a href="{% url 'lista_presupuestos' %}" class="btn btn-secondary mt-3">Regresar</a>
+    </div>
+</body>
+</html>

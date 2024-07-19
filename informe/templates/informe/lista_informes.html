@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Lista de Informes</title>
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class=fondo>
+    <div class="container mt-5">
+        <h1 class="text-center">Informes</h1>
+        <a href="{% url 'crear_informe' %}" class="btn btn-primary mb-3">Crear Informe</a>
+        <ol>
+            {% for informe in informes %}
+                <li>
+                        Orden de Servicio: {{ informe.orden_servicio }}<br>
+                    <a href="{% url 'visualizar_informe' informe.id_inf_tec %}">Ver</a>
+                    <a href="{% url 'editar_informe' informe.id_inf_tec %}">Editar</a>
+                    <a href="{% url 'eliminar_informe' informe.id_inf_tec %}">Eliminar</a>
+                </li>
+            {% endfor %}
+        </ol>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+</body>
+</html>

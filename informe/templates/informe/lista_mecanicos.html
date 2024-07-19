@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Lista de Mecánicos</title>
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class=fondo>
+    <div class="container mt-5">
+        <h1 class="text-center">Mecánicos</h1>
+        <a href="{% url 'crear_mecanico' %}" class="btn btn-primary mb-3">Crear Mecánico</a>
+        <ol>
+            {% for mecanico in mecanicos %}
+                <li>
+                    Nombre: {{ mecanico.nombre_mecanico }} {{ mecanico.mec_apellido_paterno }} {{ mecanico.mec_apellido_materno }} <br> Número Celular: {{ mecanico.numero_celular }}<br>
+                    <a href="{% url 'editar_mecanico' mecanico.id_mecanico %}">Editar</a>
+                    <a href="{% url 'eliminar_mecanico' mecanico.id_mecanico %}">Eliminar</a>
+                </li>
+            {% endfor %}
+        </ol>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+</body>
+</html>

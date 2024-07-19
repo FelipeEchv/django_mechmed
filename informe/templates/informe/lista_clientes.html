@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="fondo">
+    <div class="container mt-5">
+        <h1 class="text-center">Clientes</h1>
+        <a href="{% url 'crear_cliente' %}" class="btn btn-primary mb-3">Crear Cliente</a>
+        <ol>
+            {% for cliente in clientes %}
+                <li>
+                    Nombre: {{ cliente.nombre_cliente }} <br> Empresa: {{ cliente.nombre_empresa }}<br>
+                    <a href="{% url 'editar_cliente' cliente.id_cliente %}">Editar</a>
+                    <a href="{% url 'eliminar_cliente' cliente.id_cliente %}">Eliminar</a>
+                </li>
+            {% endfor %}
+        </ol>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+</body>
+</html>

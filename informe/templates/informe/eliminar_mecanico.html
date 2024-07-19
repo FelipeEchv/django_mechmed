@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Mecánico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+</head>
+<body class="fondo">
+    <div class="container mt-5">
+        <h1 class="text-center">Eliminar Mecánico</h1>
+        <p>¿Estás seguro de que deseas eliminar este mecánico?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'lista_mecanicos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

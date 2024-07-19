@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Eliminación</title>
+    <link rel="stylesheet" href="{% static 'informe/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+</head>
+<body class="fondo">
+    <div class="container mt-5">
+        <h2>Confirmar Eliminación</h2>
+        <p>¿Estás seguro que deseas eliminar la solicitud de {{ solicitud.nombre }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'lista_solicitudes' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

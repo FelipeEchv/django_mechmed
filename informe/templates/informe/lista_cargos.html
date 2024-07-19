@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Lista de Cargos</title>
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="fondo">
+    <div class="container mt-5">
+        <h1 class="text-center">Cargos</h1>
+        <a href="{% url 'crear_cargo' %}" class="btn btn-primary mb-3">Crear Cargo</a>
+        <ol>
+            {% for cargo in cargos %}
+                <li>
+                    Cargo: {{ cargo.nombre_cargo }}<br>
+                    <a href="{% url 'editar_cargo' cargo.id_cargo %}">Editar</a>
+                    <a href="{% url 'eliminar_cargo' cargo.id_cargo %}">Eliminar</a>
+                </li>
+            {% endfor %}
+        </ol>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+</body>
+</html>

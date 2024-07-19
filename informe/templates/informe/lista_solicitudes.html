@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Solicitudes</title>
+    <link rel="stylesheet" href="{% static 'informe/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'informe/css/estilos.css' %}">
+</head>
+<body class="fondo">
+    <div class="container mt-5">
+        <h2 class="text-center">Lista de Solicitudes</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud in solicitudes %}
+                <tr>
+                    <td>{{ solicitud.id_solicitud }}</td>
+                    <td>{{ solicitud.nombre }}</td>
+                    <td>{{ solicitud.telefono }}</td>
+                    <td>{{ solicitud.correo_electrónico }}</td>
+                    <td>
+                        <a href="{% url 'eliminar_solicitud' solicitud.id_solicitud %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Regresar al Inicio</a>
+    </div>
+</body>
+</html>

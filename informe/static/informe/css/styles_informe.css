@@ -1,0 +1,104 @@
+/* POPPINS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-image: url("../img/fondo.jpg");
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    background-position: center; /* Centrar la imagen */
+    background-attachment: fixed; /* Mantener la imagen fija cuando se desplaza */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    width: 100%;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 70px); /* Ajusta la altura para tener en cuenta el navbar */
+    width: 100%;
+    padding-top: 70px; /* Asegura que el contenido no esté cubierto por el navbar */
+}
+
+.container {
+    width: 100%;
+    max-width: 900px; /* Ancho máximo para el formulario */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el formulario */
+    border-radius: 10px; /* Bordes redondeados para el formulario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    padding: 20px;
+    margin: 20px;
+}
+
+.top-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header {
+    color: #fff;
+    font-size: 30px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-block:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-container h5 {
+    color: #fff;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.form-label {
+    color: #fff;
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+/* Ajustes específicos para columnas en pantallas grandes */
+@media (min-width: 992px) {
+    .col-md-2, .col-md-3, .col-md-6, .col-md-12 {
+        padding-bottom: 15px;
+    }
+}
